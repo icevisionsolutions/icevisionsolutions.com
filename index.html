@@ -160,8 +160,7 @@ section.block{padding:110px 0}
 
 /* ---------- LENS / SERVICES ---------- */
 .lens-intro{background:var(--white);position:relative}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;max-width:820px;margin:0 auto}
-.services-grid .svc:last-child:nth-child(odd){grid-column:1/-1;max-width:400px;margin:0 auto;width:100%}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .svc{
   position:relative;padding:32px 28px;border-radius:20px;
   background:linear-gradient(180deg,#fbfdff,#eef6fc);
@@ -372,7 +371,7 @@ footer{background:var(--abyss);color:var(--ice);padding:56px 0 34px}
       <div class="svc reveal">
         <div class="num">01</div>
         <h3>Creative & Design</h3>
-        <p>Brand identity, graphic design, and content that makes you look sharp everywhere.</p>
+        <p>Logo creation, brand identity, graphic design, and content that makes you look sharp everywhere.</p>
       </div>
       <div class="svc reveal">
         <div class="num">02</div>
@@ -403,7 +402,7 @@ footer{background:var(--abyss);color:var(--ice);padding:56px 0 34px}
     <div class="cta-card reveal">
       <h2>Let's get your brand in focus.</h2>
       <p>Tell us a bit about what you need and we'll get back to you about a free, no-pressure consult.</p>
-      <form class="cform" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <form class="cform" id="contactForm" action="https://formspree.io/f/mrpzjeow" method="POST">
         <div class="row">
           <div class="field">
             <label for="name">Name</label>
@@ -452,7 +451,7 @@ footer{background:var(--abyss);color:var(--ice);padding:56px 0 34px}
 <script>
 // scroll reveal
 const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
-document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%2*0.08)+'s';io.observe(el)});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3*0.08)+'s';io.observe(el)});
 // nav shrink
 addEventListener('scroll',()=>{const n=document.querySelector('nav');n.style.padding=scrollY>40?'12px 32px':'18px 32px'});
 // mobile menu toggle
@@ -467,11 +466,6 @@ form.addEventListener('submit',async(e)=>{
   const status=document.getElementById('formStatus');
   const btn=document.getElementById('submitBtn');
   const action=form.getAttribute('action');
-  if(action.includes('YOUR_FORM_ID')){
-    status.className='form-status err';
-    status.textContent='Form not connected yet — add your Formspree ID to go live.';
-    return;
-  }
   btn.disabled=true;btn.textContent='Sending...';
   status.className='form-status';status.textContent='';
   try{
